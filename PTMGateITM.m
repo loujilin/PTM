@@ -1,0 +1,95 @@
+%电路单元的PTM与ITM
+function [gPM,gIM]=PTMGateITM(p,IptNum)
+if nargin < 1
+    p=0.05;
+   IptNum=2; %the ITMs and PTMs were set base on the fact the inputing lines is less than or equal to 2;
+elseif nargin<2
+    IptNum=2;
+end
+pg=p;   %电路单元的故障概率
+for i=1:1:2^IptNum  %In this way, the author caculated all the probabilities of all type of gates. Is this necessary?
+    %AND的PTM与ITM 
+    if(i==2^IptNum)
+        gPM{1,1}(i,1)=pg;
+        gPM{1,1}(i,2)=1-pg;
+        gIM{1,1}(i,1)=0;
+        gIM{1,1}(i,2)=1;
+    else
+        gPM{1,1}(i,1)=1-pg;
+        gPM{1,1}(i,2)=pg;
+        gIM{1,1}(i,1)=1;
+        gIM{1,1}(i,2)=0;
+    end
+    %OR的PTM与ITM
+    if(i==1)
+        gPM{1,2}(i,1)=1-pg;
+        gPM{1,2}(i,2)=pg;
+        gIM{1,2}(i,1)=1;
+        gIM{1,2}(i,2)=0;
+    else
+        gPM{1,2}(i,1)=pg;
+        gPM{1,2}(i,2)=1-pg;
+        gIM{1,2}(i,1)=0;
+        gIM{1,2}(i,2)=1;
+    end
+    %NAND的PTM与ITM
+    if(i==2^IptNum)
+        gPM{1,3}(i,1)=1-pg;
+        gPM{1,3}(i,2)=pg;
+        gIM{1,3}(i,1)=1;
+        gIM{1,3}(i,2)=0;
+    else
+        gPM{1,3}(i,1)=pg;
+        gPM{1,3}(i,2)=1-pg;
+        gIM{1,3}(i,1)=0;
+        gIM{1,3}(i,2)=1;
+    end
+    %NOR的PTM与ITM
+    if(i==1)
+        gPM{1,4}(i,1)=pg;
+        gPM{1,4}(i,2)=1-pg;
+        gIM{1,4}(i,1)=0;
+        gIM{1,4}(i,2)=1;
+    else
+        gPM{1,4}(i,1)=1-pg;
+        gPM{1,4}(i,2)=pg;
+        gIM{1,4}(i,1)=1;
+        gIM{1,4}(i,2)=0;
+    end
+    %XOR的PTM与ITM
+    if(i==1||i==2^IptNum)
+        gPM{1,5}(i,1)=1-pg;
+        gPM{1,5}(i,2)=pg;
+        gIM{1,5}(i,1)=1;
+        gIM{1,5}(i,2)=0;
+    else
+        gPM{1,5}(i,1)=pg;
+        gPM{1,5}(i,2)=1-pg;
+        gIM{1,5}(i,1)=0;
+        gIM{1,5}(i,2)=1;
+    end
+    %XNOR的PTM与ITM
+    if(i==1||i==2^IptNum)
+        gPM{1,6}(i,1)=pg;
+        gPM{1,6}(i,2)=1-pg;
+        gIM{1,6}(i,1)=0;
+        gIM{1,6}(i,2)=1;
+    else
+        gPM{1,6}(i,1)=1-pg;
+        gPM{1,6}(i,2)=pg;
+        gIM{1,6}(i,1)=1;
+        gIM{1,6}(i,2)=0;
+    end
+    
+end
+%NOT的PTM与ITM
+gPM{1,7}=[pg,1-pg
+         1-pg,pg];
+gIM{1,7}=[0,1
+         1,0];
+%BUFF的PTM与ITM
+gPM{1,8}=[1,0
+          0,1];
+gIM{1,8}=[1,0
+          0,1];
+end
