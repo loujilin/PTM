@@ -13,7 +13,7 @@ UnCompleteCell={};  %非完整性链表，动态创建
 PriOpt=zeros();    %存储电路的原始输出端，动态创建
 %fidin=fopen('..\netlist\c17_22.txt','r');
 %fidin=fopen('..\netlist\74155.isc','r');
-fidin=fopen('../netlist/c17.isc','r');
+fidin=fopen('netlist/c17.isc','r');
 while(~feof(fidin))     %判断是否文件结尾
     tline=fgetl(fidin);   %按行读取文件
     tline=strtrim(tline);    %去掉tline首尾的多余空格

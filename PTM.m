@@ -13,25 +13,36 @@ for i=r:-1:2%check the every line from the end and the first line is excepted.
     ctemp=SerialNumber{i,2};
     FFrom={};
     if ctemp>0
-        [AI,AP]=GetMatrix(CompleteCell,SerialNumber{i,1}(1,1),FFrom,gIM,gPM);
-        for j=2:ctemp
+        for j=1:ctemp
             jIndex=FindIndex(CompleteCell,SerialNumber{i,1}(1,j));
-            [~,exist]=find(ismember(CompleteCell{1,jIndex}{1,7},i-1));
-            if ~isempty(exist)
-                BI=I;
-                BP=I;
-            else
-                [BI,BP]=GetMatrix(CompleteCell,SerialNumber{i,1}(1,j),FFrom,gIM,gPM);   
-          
+            LineName=cell2mat(CompleteCell{1,jIndex}(1,3));
+            if(strcmp(LineName,'from')==1||strcmp(LineName,'FROM')==1)
+               [rF,cF]=size(FFrom); 
+               for k=1:rF
+                   
+               end
             end
-            if ~isempty(BI)&&~isempty(BP)
-                AI=kron(AI,BI);
-                AP=kron(AP,BP);
-            end   
         end
-    SerialNumber{i,3}=AI;
-    SerialNumber{i,4}=AP;
     end
+%         [AI,AP]=GetMatrix(CompleteCell,SerialNumber{i,1}(1,1),FFrom,gIM,gPM);
+%         for j=2:ctemp
+%             jIndex=FindIndex(CompleteCell,SerialNumber{i,1}(1,j));
+%             [~,exist]=find(ismember(CompleteCell{1,jIndex}{1,7},i-1));
+%             if ~isempty(exist)
+%                 BI=I;
+%                 BP=I;
+%             else
+%                 [BI,BP]=GetMatrix(CompleteCell,SerialNumber{i,1}(1,j),FFrom,gIM,gPM);   
+%           
+%             end
+%             if ~isempty(BI)&&~isempty(BP)
+%                 AI=kron(AI,BI);
+%                 AP=kron(AP,BP);
+%             end   
+%         end
+%     SerialNumber{i,3}=AI;
+%     SerialNumber{i,4}=AP;
+
 end
 
 end
