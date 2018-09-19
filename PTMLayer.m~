@@ -30,7 +30,7 @@ for i=istart:m
 %final maxlevel.
 
             for ig=1:cg%需要考虑线没有编号的情况，即编号不全的情况
-                if ig~=maxi%multiple maxlevel should be considered.
+                if ig~=maxi%mu
                     linetemp=preline{1,ig};
                     %mend the missing level mark;
                     [CompleteCell,SerialNumber]=mendlevel(CompleteCell,SerialNumber,linetemp,maxlevel);

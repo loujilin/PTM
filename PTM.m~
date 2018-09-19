@@ -1,4 +1,4 @@
-function [ SerialNumber ] = PTM( CompleteCell,SerialNumber,PriOpt,p)
+function [ PTMmatrix ] = PTM( CompleteCell,SerialNumber,PriOpt,p)
 %PTM 此处显示有关此函数的摘要
 %   此处显示详细说明
 
@@ -42,7 +42,7 @@ for i=r:-1:2%check the every line from the end and the first line is excepted.
         end
         jIndex=FindIndex(CompleteCell,SerialNumber{i,1}(1,1));
 %         LineName=cell2mat(CompleteCell{1,jIndex}(1,3));
-        [AI,AP,FFrom ]=GetMatrix(CompleteCell,jIndex,FFrom,i,p);%i equals the layer.
+        [AI,AP]=GetMatrix(CompleteCell,jIndex,FFrom,i,p);%i equals the layer.
          for j=2:ctemp
              jIndex=FindIndex(CompleteCell,SerialNumber{i,1}(1,j));
              [BI,BP,FFrom]=GetMatrix(CompleteCell,jIndex,FFrom,i,p);

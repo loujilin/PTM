@@ -1,0 +1,13 @@
+function [ output_args ] = CaculatePTM( input_args )
+%CACULATEPTM Summary of this function goes here
+%   Detailed explanation goes here
+[r,c]=size(SerialNumber);
+if r>=2 
+    for i=r:-1:2
+        
+    end   
+end
+
+
+end
+

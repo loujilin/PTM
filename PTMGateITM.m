@@ -20,7 +20,7 @@ for i=1:1:2^IptNum  %In this way, the author caculated all the probabilities of 
         gIM{1,1}(i,1)=1;
         gIM{1,1}(i,2)=0;
     end
-    %OR的PTM与ITM
+     %OR的PTM与ITM
     if(i==1)
         gPM{1,2}(i,1)=1-pg;
         gPM{1,2}(i,2)=pg;
@@ -32,7 +32,7 @@ for i=1:1:2^IptNum  %In this way, the author caculated all the probabilities of 
         gIM{1,2}(i,1)=0;
         gIM{1,2}(i,2)=1;
     end
-    %NAND的PTM与ITM
+   %NAND的PTM与ITM
     if(i==2^IptNum)
         gPM{1,3}(i,1)=1-pg;
         gPM{1,3}(i,2)=pg;
