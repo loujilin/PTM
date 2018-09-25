@@ -75,6 +75,25 @@ for i=istart:m
              
      end
  end
+%mend the output line for different levels
+[~,co]=size(PriOpt);
+maxlevel=0;maxi=0;tempmax=0;
+for i=1:co%find the maxlevel
+        linetemp=num2str(PriOpt(1,i));
+        tempmax=findmaxlevel(CompleteCell,linetemp);%temp is ambiguity.
+        if tempmax>maxlevel
+            maxlevel=tempmax;
+            maxi=i;
+        end
+end
 
+for i=1:co%mend the other levels
+   if i~=maxi%multiple maxlevel should be considered.
+        linetemp=num2str(PriOpt(1,i));
+        %mend the missing level mark;
+        [CompleteCell,SerialNumber]=mendlevel(CompleteCell,SerialNumber,linetemp,maxlevel);
+    end
+  
+end
 end
 
